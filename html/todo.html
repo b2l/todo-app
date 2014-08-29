@@ -3,7 +3,49 @@
   <head>
     <meta charset="UTF-8">
     <title>TODO App</title>
+    <link rel="stylesheet" href="/css/todo.css" media="all">
   </head>
   <body>
+
+    <header>
+      <h1>Todos</h1>
+      <form id="add-todo-form" class="add-todo-form clearfix">
+        <input type="text" name="name" placeholder="What to do now ?" class="input" autofocus/>
+        <input type="submit" value="Add" class="btn pull-right" />
+      </form>
+
+    </header>
+
+    <section id="todo-app">
+      <ul id="todo-list"></ul>
+    </section>
   </body>
+
+  <script type="text/x-template" data-tempate-name="todo-item">
+    <li class="clearfix todo-item <%= done ? 'done' : '' %>">
+      <span class="todo-done">
+        <input data-todo-id="<%= id %>" type="checkbox" name="todo-status" class="todo-status" <%= done? 'checked' : '' %> />
+      </span>
+      <span class="todo-name-show">
+        <%= name %>
+        <span class="pull-right actions">
+          <button class="btn update">Update</button>
+          <button data-todo-id="<%= id %>" class="btn remove">Delete</button>
+        </span>
+      </span>
+      <span class="todo-name-edit hidden">
+        <form class="todo-update">
+          <input type="hidden" name="todoId" value="<%= id %>" />
+          <input type="text" name="todoName" value="<%= name %>" />
+          <input type="submit" value="save" class="btn" />
+          <input type="reset" value="cancel" class="btn cancel-edit" />
+        </form>
+      </span>
+    </li>
+  </script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/js/Todos.js"></script>
+  <script src="/js/todo-app.js"></script>
 </html>
