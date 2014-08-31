@@ -27,7 +27,9 @@
         <input data-todo-id="<%= id %>" type="checkbox" name="todo-status" class="todo-status" <%= done? 'checked' : '' %> />
       </span>
       <span class="todo-name-show">
-        <%= name %>
+        <span class="todo-name-label">
+          <%= name %>
+        </span>
         <span class="pull-right actions">
           <button class="btn update">Update</button>
           <button data-todo-id="<%= id %>" class="btn remove">Delete</button>
