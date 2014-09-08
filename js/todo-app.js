@@ -1,6 +1,8 @@
 // --- Collections model
 var Todos = window.Todos;
 
+var SyncService = window.Sync(Todos);
+
 // --- Event listener
 $('#add-todo-form').on('submit', addTodo);
 $('#todo-list').on('click', '.update', editTodo);

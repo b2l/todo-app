@@ -1,7 +1,7 @@
-/** 
-*  * Todos.js
-*   * contains a collection wrapper for the Todo model
-*    */
+/**
+ * Todos.js
+ * contains a collection wrapper for the Todo model
+ */
 
 // --- Data store
 var _todos = [];
@@ -50,9 +50,8 @@ var Todos = {
 
 if (typeof exports !== 'undefined') {
   if (typeof module !== 'undefined' && module.exports) {
-    exports = module.exports = _;
+    exports = module.exports = Todos;
   }
-  exports = Todos;
 } else {
   window.Todos = Todos;
 }
