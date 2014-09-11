@@ -84,3 +84,6 @@ function removeTodosDone() {
 var todosTemplate = _.template($('[data-template-name="todo-item"]').html());
 var todosInfoTemplate = _.template($('[data-template-name="todos-info"]').html());
 
+// --- Start app
+Todos.init();
+render();
