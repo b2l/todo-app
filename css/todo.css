@@ -9,13 +9,7 @@ body {
   font-family: 'Ubuntu';
 }
 
-input {
-  line-height: 24px;
-  font-size: 18px;
-  font-family: 'Roboto';
-}
-
-
+/** Tools */
 .hidden {
   display: none;
 }
@@ -34,6 +28,19 @@ input {
   clear: both;
 }
 
+/* Typo */
+
+body {
+  color: #333;
+}
+
+a {
+  color: #535353;
+}
+a:hover {
+  text-decoration: none;
+}
+
 h1 {
   text-align: center;
 }
@@ -50,6 +57,13 @@ ul {
   margin: 0;
 }
 
+input {
+  line-height: 24px;
+  font-size: 18px;
+  font-family: 'Roboto';
+}
+
+/* form */
 input,
 .btn {
   border: 1px solid #535353;
@@ -102,4 +116,9 @@ input[type="text"]:focus {
 .todo-item.done {
   opacity: .5;
   text-decoration: line-through;
+}
+
+.todos-info {
+  margin-top: 10px;
+  font-size: .9em;
 }

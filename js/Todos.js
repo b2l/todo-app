@@ -45,6 +45,14 @@ var Todos = {
     var todo = new Todo(name);
     _todos.push(todo);
     return todo;
+  },
+  clearDone: function() {
+    var dones = [];
+    _todos.forEach(function(t, i) {
+      if (t.done)
+        dones.push(t);
+    });
+    dones.forEach(function(t) { t.destroy(); });
   }
 };
 

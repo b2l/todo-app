@@ -10,7 +10,7 @@
     <header>
       <h1>Todos</h1>
       <form id="add-todo-form" class="add-todo-form clearfix">
-        <input type="text" name="name" placeholder="What to do now ?" class="input" autofocus/>
+        <input type="text" name="name" placeholder="What to do now ?" class="input" autocomplete="off" autofocus/>
         <input type="submit" value="Add" class="btn pull-right" />
       </form>
 
@@ -19,9 +19,11 @@
     <section id="todo-app">
       <ul id="todo-list"></ul>
     </section>
+    <section id="todos-info" class="todos-info">
+    </section>
   </body>
 
-  <script type="text/x-template" data-tempate-name="todo-item">
+  <script type="text/x-template" data-template-name="todo-item">
     <li class="clearfix todo-item <%= done ? 'done' : '' %>">
       <span class="todo-done">
         <input data-todo-id="<%= id %>" type="checkbox" name="todo-status" class="todo-status" <%= done? 'checked' : '' %> />
@@ -44,6 +46,21 @@
         </form>
       </span>
     </li>
+  </script>
+
+  <script type="text/x-template" data-template-name="todos-info">
+    <% if (done > 0) { %>
+      <a href="#" class="pull-right remove-done">Remove the <%= done %> completed things</a>
+    <% } %>
+    <% if (notDone === 0) { %>
+      <span class="done">
+        Congratz ! Nothing to do.
+      </span>
+    <% } else { %>
+      <span class="done">
+        <%= notDone %> things to do
+      </span>
+    <% } %>
   </script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>

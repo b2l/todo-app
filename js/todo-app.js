@@ -1,8 +1,6 @@
 // --- Collections model
 var Todos = window.Todos;
 
-var SyncService = window.Sync(Todos);
-
 // --- Event listener
 $('#add-todo-form').on('submit', addTodo);
 $('#todo-list').on('click', '.update', editTodo);
@@ -10,6 +8,7 @@ $('#todo-list').on('click', '.cancel-edit', cancelEditTodo);
 $('#todo-list').on('submit', '.todo-update', updateTodo);
 $('#todo-list').on('change', '.todo-status', updateTodoStatus);
 $('#todo-list').on('click', '.remove', removeTodo);
+$('#todos-info').on('click', '.remove-done', removeTodosDone);
 
 // --- DOM Rendering
 function render() {
@@ -20,6 +19,14 @@ function render() {
   });
   $('#todo-list').html(html);
   $('#add-todo-form .input').focus();
+
+  var notDones = todos.filter(function(t) { return !t.done }).length;
+  var data = {
+    notDone: notDones,
+    done: todos.length - notDones
+  }
+  var infoHtml = todosInfoTemplate(data);
+  $('#todos-info').html(infoHtml);
 }
 
 // --- Event handler
@@ -68,5 +75,12 @@ function removeTodo() {
   render();
 }
 
+function removeTodosDone() {
+  Todos.clearDone();
+  render();
+}
+
 // --- templating
-var todosTemplate = _.template($('[data-tempate-name="todo-item"]').html());
+var todosTemplate = _.template($('[data-template-name="todo-item"]').html());
+var todosInfoTemplate = _.template($('[data-template-name="todos-info"]').html());
+
