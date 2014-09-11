@@ -1,6 +1,13 @@
 // --- Collections model
 var Todos = window.Todos;
 
+// --- Tools
+function htmlEncode(s) {
+  return s.replace(/&(?!\w+([;\s]|$))/g, "&amp;")
+    .replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+
 // --- Event listener
 $('#add-todo-form').on('submit', addTodo);
 $('#todo-list').on('click', '.update', editTodo);
@@ -33,7 +40,7 @@ function render() {
 function addTodo(e) {
   e.preventDefault();
   var input = $(this).find('input[name="name"]');
-  var name = input.val();
+  var name = htmlEncode(input.val());
   Todos.createTodo(name);
   input.val('');
   render();
@@ -59,7 +66,7 @@ function updateTodo(e) {
   e.preventDefault();
   var id = this.elements.todoId.value;
   var todo = Todos.getById(id);
-  todo.name = this.elements.todoName.value;
+  todo.name = htmlEncode(this.elements.todoName.value);
   render();
 }
 
