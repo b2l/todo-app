@@ -26,12 +26,12 @@
   <script type="text/x-template" data-template-name="todo-item">
     <li class="clearfix todo-item <%= done ? 'done' : '' %>">
       <span class="todo-done">
-        <input data-todo-id="<%= id %>" type="checkbox" name="todo-status" class="todo-status" <%= done? 'checked' : '' %> />
+        <input id="toto-check-<%= id %>" data-todo-id="<%= id %>" type="checkbox" name="todo-status" class="todo-status" <%= done? 'checked' : '' %> />
       </span>
       <span class="todo-name-show">
-        <span class="todo-name-label">
+        <label for="toto-check-<%= id %>" class="todo-name-label">
           <%= name %>
-        </span>
+        </label>
         <span class="pull-right actions">
           <button class="btn update">Update</button>
           <button data-todo-id="<%= id %>" class="btn remove">Delete</button>
