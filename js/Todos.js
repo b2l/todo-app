@@ -52,7 +52,7 @@ var Todos = {
     var todo = null;
     while(todo === null && i < _todos.length) {
       if (_todos[i].id === id) {
-        todo = _todos[i]
+        todo = _todos[i];
       }
 
       i++;

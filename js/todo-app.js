@@ -27,11 +27,11 @@ function render() {
   $('#todo-list').html(html);
   $('#add-todo-form .input').focus();
 
-  var notDones = todos.filter(function(t) { return !t.done }).length;
+  var notDones = todos.filter(function(t) { return !t.done; }).length;
   var data = {
     notDone: notDones,
     done: todos.length - notDones
-  }
+  };
   var infoHtml = todosInfoTemplate(data);
   $('#todos-info').html(infoHtml);
 }
@@ -72,7 +72,10 @@ function updateTodo(e) {
 
 function updateTodoStatus(e) {
   var todo = Todos.getById($(this).attr('data-todo-id'));
-  $(this).prop('checked') ? todo.markAsDone() : todo.markAsNotDone();
+  if ($(this).prop('checked'))
+    todo.markAsDone();
+  else
+    todo.markAsNotDone();
   render();
 }
 
