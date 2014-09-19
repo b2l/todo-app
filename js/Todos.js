@@ -7,7 +7,7 @@
 var _todos = [];
 
 function load() {
-  var todos = JSON.parse(localStorage.getItem('todos'));
+  var todos = Store.load('todos');
   todos.forEach(function(t) {
     todo = new Todo(t.name, t.done);
     todo.id = t.id;
@@ -15,7 +15,7 @@ function load() {
   });
 }
 function save() {
-  localStorage.setItem('todos', JSON.stringify(_todos));
+  Store.save('todos', _todos);
 }
 
 // --- Todo model
